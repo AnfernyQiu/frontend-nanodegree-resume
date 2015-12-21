@@ -9,11 +9,11 @@ var bio={
         "mobile":"158-1884-1689",
         "email":"anfernyqiu@gmail.com",
         "twitter":"anfernyqiu@gmail.com",
-        "GitHub":"https://github.com/AnfernyQiu",
+        "github":"https://github.com/AnfernyQiu",
         "blog":"anfernyqiu@gmail.com",
         "location":"Guangzhou China"
     },
-        "bioPic":"images/fry.jpg",
+        "biopic":"images/myImage.jpg",
         "welcomeMessage":"Welcome to my space, and have fun!",
         "skills":["Programming","Drawing","Design","Saving the World"]
 };
@@ -28,10 +28,10 @@ bio.display=function(bioObj){
     var mobile=HTMLmobile.replace("%data%",bioObj.contacts.mobile);
     var email=HTMLemail.replace("%data%",bioObj.contacts.email);
     var twitter=HTMLtwitter.replace("%data%",bio.contacts.twitter);
-    var Github=HTMLgithub.replace("%data%",bioObj.contacts.GitHub);
+    var Github=HTMLgithub.replace("%data%",bioObj.contacts.github);
     var blog=HTMLblog.replace("%data%",bioObj.contacts.blog);
     var locationMy=HTMLlocation.replace("%data%",bioObj.contacts.location);
-    var picture=HTMLbioPic.replace("%data%",bioObj.bioPic);
+    var picture=HTMLbioPic.replace("%data%",bioObj.biopic);
     var welcomeMsg=HTMLwelcomeMsg.replace("%data%",bioObj.welcomeMessage);
     
     $("#topContacts").append(mobile)
@@ -93,28 +93,41 @@ work.display=function(workObj){
 var projects={
     "projects":[
         {
-            "title":"Build a portfolio",
-            "dates":2015,
-            "description":"Build a portfolio website to show my projects",
+            "title":"Build a webpage game",
+            "dates":"2015-2016",
+            "description":"Build a classic arcade game Clone",
             "images":[
                 {
-                    "url":"images/optimize-500_2x.jpg"
+                    "url":"images/game-250_1x.jpg"
                 },
                 {
-                    "url":"images/game-500_2x.jpg"
+                    "url":"images/game2-250.jpg"
                 }
             ]
         },
         {
-            "title":"Build a webpage game",
-            "dates":"2015",
-            "description":"Build a arcade game",
+            "title":"Build an interative resume",
+            "dates":"2015-2016",
+            "description":"Build an interative resume to show myself and my projects",
+             "images":[
+                 {
+                     "url":"images/resume-250_1x.jpg"
+                 },
+                 {
+                     "url":"images/resume2-250.jpg"
+                 }
+             ]
+        },
+        {
+            "title":"Build a portfolio",
+            "dates":"2015-2016",
+            "description":"Build a portfolio website to show my projects",
             "images":[
                 {
-                    "url":"images/game-500_2x.jpg"
+                    "url":"images/portfolio1-250.jpg"
                 },
                 {
-                    "url":"adbc.comf"
+                    "url":"images/portfolio2-250.jpg"
                 }
             ]
         }
@@ -144,9 +157,9 @@ var education={
     "schools":[ 
         {
             "school":"South China University of Technology",
-            "location":"Tokyo",
-            "major":"electric and information technology",
-            "dates":"1997-2001",
+            "location":"Guangzhou",
+            "majors":["electric and information technology","Tennis"],
+            "date":2001,
             "degree":"BA",
             "url":"http://www.scut.edu.cn/"
         }
@@ -155,7 +168,7 @@ var education={
         {
             "title":"Udacity FrontEnd Nanodegree",
             "school":"Udacity",
-            "dates":2015,
+            "date":2015,
             "url":"http://www.Udacity.com"
         }
     ]
@@ -167,20 +180,25 @@ education.display=function(eduObj){
         var schoolEdu=HTMLschoolName.replace("%data%",school.school);
             schoolEdu=schoolEdu.replace("#",school.url);
         var degreeEdu=HTMLschoolDegree.replace("%data%",school.degree);
-        var schoolMaj=HTMLschoolMajor.replace("%data%",school.major);
-        var dateEdu=HTMLschoolDates.replace("%data%",school.dates);
+        var dateEdu=HTMLschoolDates.replace("%data%",school.date);
         var locationEdu=HTMLschoolLocation.replace("%data%",school.location);
+        var majorString='Major: ';
+        for(let major of school.majors)        
+            majorString+=` <i class="fa fa-star"></i>${major}`;
+        majorString=`<em><br>${majorString}</em>`;
+        
         $(".education-entry:last").append(schoolEdu+degreeEdu)
                                   .append(dateEdu)
                                   .append(locationEdu)
-                                  .append(schoolMaj);
+                                  .append(majorString);
     }
+    
     for(let onlineCourse of eduObj["online courses"]){
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
         var onlineTitle=HTMLonlineTitle.replace("%data%",onlineCourse.title);
         var onlineSchool=HTMLonlineSchool.replace("%data%",onlineCourse.school);
-        var onlineDate=HTMLonlineDates.replace("%data%",onlineCourse.dates);
+        var onlineDate=HTMLonlineDates.replace("%data%",onlineCourse.date);
         var onlineUrl=HTMLonlineURL.replace("%data%",onlineCourse.url);
         $(".education-entry:last").append(onlineTitle+onlineSchool)
                                   .append(onlineDate)

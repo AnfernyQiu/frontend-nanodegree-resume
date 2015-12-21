@@ -53,7 +53,7 @@ var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
+var HTMLonlineURL = '<a href="#" class="onlineURL">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
 
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
-
+*/
 clickLocations = [];
 
 function logClicks(x,y) {
@@ -89,7 +89,6 @@ $(document).click(function(loc) {
      logClicks(loc.pageX,loc.pageY);
 });
 
-*/
 
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
@@ -174,7 +173,7 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
-        infoWindow.open(map,marker);
+        infoWindow.open(map,this);
     });
 
     // this is where the pin actually gets added to the map.
