@@ -12,6 +12,7 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
+'use strict';
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span><hr>';
 
@@ -58,7 +59,8 @@ var HTMLonlineURL = '<a href="#" class="onlineURL">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
-
+var infoPopup='<div id="popcontent" class="popcontent">';
+var infoContent='<h2></h2><hr><img src="" class="popimage"><p></p></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 
@@ -72,7 +74,7 @@ $(document).ready(function() {
 
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
 */
-clickLocations = [];
+var clickLocations = [];
 
 function logClicks(x,y) {
   clickLocations.push(
@@ -114,8 +116,17 @@ function initializeMap() {
   appended to #mapDiv in resumeBuilder.js. 
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
-
+ /* 
+When someone clicks on the map other than the infowindow, the opened infowindow will be closed.
+  */   
+  google.maps.event.addListener(map, 'click', function() {
+        infoWindow.close();
+        });
+ 
+// This infoWindow is shared by all of the location markers. That means only one //instance of infowindow is created.
+    
+ var infoWindow = new google.maps.InfoWindow({
+    });
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
@@ -163,17 +174,14 @@ function initializeMap() {
       title: name
     });
 
-    // infoWindows are the little helper windows that open when you click
-    // or hover over a pin on a map. They usually contain more information
-    // about a location.
-    var infoWindow = new google.maps.InfoWindow({
-      content: name
-    });
+   
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
-        infoWindow.open(map,this);
+            var locationName=name.split(',')[0];
+                infoWindow.setContent(metaLocation.show(locationName));
+                infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
