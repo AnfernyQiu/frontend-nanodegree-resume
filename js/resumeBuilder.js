@@ -68,7 +68,7 @@ var work={
         {
             "employer":"Ericsson",
             "title":"Test and Repair Engineer",
-            "location":"Guangzhou",
+            "location":"Beijing",
             "dates":"June.2001--March.2012",
             "description":"Test and repair hardware of RBS, repair return rate analyze and improvement."
         }
@@ -144,7 +144,7 @@ var education={
     "schools":[ 
         {
             "school":"South China University of Technology",
-            "location":"Guangzhou",
+            "location":"Tokyo",
             "major":"electric and information technology",
             "dates":"1997-2001",
             "degree":"BA",
@@ -230,6 +230,6 @@ bio.display(bio);
 projects.display(projects);
 education.display(education);
 
-$("#mapDiv").append(googleMap)
+$("#mapDiv").append(googleMap);
 
 
