@@ -125,7 +125,7 @@ var projects = {
     ]
 };
 
-projects.display = function(projects) {
+/*projects.display = function(projects) {
     for (let pro of projects.projects) {
         $("#projects").append(HTMLprojectStart);
         var proTitle = HTMLprojectTitle.replace("%data%", pro.title);
@@ -142,9 +142,9 @@ projects.display = function(projects) {
 
     }
 };
+*/
 
-
-/*projects.display=function(projects){
+projects.display=function(projects){
     for (let pro of projects.projects){
         $("#projects").append(HTMLporjectStartPanel);
         var proTitle = HTMLprojectTitlePanel.replace("%data%", pro.title);
@@ -161,7 +161,7 @@ projects.display = function(projects) {
         }
     }
 };
-*/
+
 var education = {
     "schools": [{
         "school": "South China University of Technology",

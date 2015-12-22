@@ -20,9 +20,18 @@ h6 {
 }
 
 .education-entry,
-.project-entry,
 .work-entry {
     padding: 0 5%;
+}
+
+.panel-success {
+    margin: 0 5% 5px;
+    border-radius: 20px;
+}
+
+.panel-heading {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 h1 {
@@ -253,12 +262,16 @@ span {
   .center-content,
     h2,
     h3,
-    .project-entry,
     .work-entry,
     .education-entry {
         padding-left: 10%;
         padding-right: 10%;
     }  
+    
+    .panel-success {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
     
     #map {
         margin-left: 10%;
@@ -270,12 +283,16 @@ span {
     .center-content,
     h2,
     h3,
-    .project-entry,
     .work-entry,
     .education-entry {
         padding-left: 15%;
         padding-right: 15%;
     }  
+    
+    .panel-success {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
     
     #map {
         margin-left: 15%;
