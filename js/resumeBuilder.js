@@ -53,6 +53,11 @@ bio.display = function(bioObj) {
         $("#skills").html(TotalSkill);
     }
 
+    // display footer contacts    
+    $("#footerContacts").append(mobile)
+        .append(email)
+        .append(Github);
+
 };
 
 
@@ -62,13 +67,13 @@ var work = {
         "title": "Quality Engineer",
         "location": "Guangzhou",
         "dates": "April.2012--June.2015",
-        "description": "Quality control and improvement for daily repair activity, train new employee."
+        "description": "Quality control and improvement for daily repair activity, train new employee, develop and maintain software tools."
     }, {
         "employer": "Ericsson",
         "title": "Test and Repair Engineer",
         "location": "Beijing",
         "dates": "June.2001--March.2012",
-        "description": "Test and repair hardware of RBS, repair return rate analyze and improvement."
+        "description": "Test and repair hardware of RBS, repair return rate analyze and improvement, knowledge and skills sharing."
     }]
 };
 
@@ -138,6 +143,25 @@ projects.display = function(projects) {
     }
 };
 
+
+/*projects.display=function(projects){
+    for (let pro of projects.projects){
+        $("#projects").append(HTMLporjectStartPanel);
+        var proTitle = HTMLprojectTitlePanel.replace("%data%", pro.title);
+        var proBody = HTMLprojectBodyPanel.replace("%dates%", pro.dates);
+        proBody = proBody.replace("%descpt%", pro.description);
+        $(".panel-success:last").append(proTitle + proBody);
+        if (pro.images.length > 0) {
+            for (let proImg of pro.images) {
+                var proImage = HTMLprojectImagePanel.replace("%img%", proImg.url);
+                $(".panel-success:last").find(".panel-body")
+                                        .append(proImage);
+            }
+
+        }
+    }
+};
+*/
 var education = {
     "schools": [{
         "school": "South China University of Technology",
