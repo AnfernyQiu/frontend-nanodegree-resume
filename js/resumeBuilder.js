@@ -13,9 +13,9 @@ var bio = {
         "blog": "anfernyqiu@gmail.com",
         "location": "Guangzhou China"
     },
-    "biopic": "images/myImage.jpg",
-    "welcomeMessage": "Welcome to my space, and have fun!",
-    "skills": ["Programming", "Drawing", "Design", "Saving the World"]
+    "biopic": "images/fry.jpg",
+    "welcomeMessage": "Let's rock and roll! Music show will start at 10PM!",
+    "skills": ["Never tired", "Deliver fun", "Fix the earth", "Saving the Universe"]
 };
 
 bio.display = function(bioObj) {
@@ -94,27 +94,33 @@ work.display = function(workObj) {
 
 var projects = {
     "projects": [{
-            "title": "Build a webpage game",
+            "title": "A webpage game",
             "dates": "2015-2016",
             "description": "Build a classic arcade game Clone",
+            "github":"#",
+            "website":"#",
             "images": [{
                 "url": "images/game-250_1x.jpg"
             }, {
                 "url": "images/game2-250.jpg"
             }]
         }, {
-            "title": "Build an interative resume",
+            "title": "An interative resume",
             "dates": "2015-2016",
             "description": "Build an interative resume to show myself and my projects",
+            "github":"#",
+            "website":"#",
             "images": [{
                 "url": "images/resume-250_1x.jpg"
             }, {
                 "url": "images/resume2-250.jpg"
             }]
         }, {
-            "title": "Build a portfolio",
+            "title": "A portfolio website",
             "dates": "2015-2016",
             "description": "Build a portfolio website to show my projects",
+            "github":"#",
+            "website":"#",
             "images": [{
                 "url": "images/portfolio1-250.jpg"
             }, {
@@ -148,9 +154,16 @@ projects.display=function(projects){
     for (let pro of projects.projects){
         $("#projects").append(HTMLporjectStartPanel);
         var proTitle = HTMLprojectTitlePanel.replace("%data%", pro.title);
+        var proLinkGit = HTMLprojectGithub.replace("%gdata%", pro.github);
+        var proLinkWeb = HTMLprojectWebsite.replace("%wdata%", pro.website);
+        var proLink = $(proLinkGit+proLinkWeb);
+        var proHead = $(proTitle);
+        proHead.append(proLink);
+        
         var proBody = HTMLprojectBodyPanel.replace("%dates%", pro.dates);
         proBody = proBody.replace("%descpt%", pro.description);
-        $(".panel-success:last").append(proTitle + proBody);
+        $(".panel-success:last").append(proHead)
+                                .append(proBody);
         if (pro.images.length > 0) {
             for (let proImg of pro.images) {
                 var proImage = HTMLprojectImagePanel.replace("%img%", proImg.url);
@@ -160,7 +173,7 @@ projects.display=function(projects){
 
         }
     }
-};
+}; 
 
 var education = {
     "schools": [{

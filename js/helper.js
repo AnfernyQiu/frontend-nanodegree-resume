@@ -17,12 +17,12 @@ var HTMLheaderName = '<h1 id="name">%data%</h1><br class="brk">';
 var HTMLheaderRole = '<span class="role">%data%</span><hr>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><i class="fa fa-mobile fa-lg"></i><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
+var HTMLemail = '<li class="flex-item"><i class="fa fa-envelope fa-lg"></i><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
+var HTMLtwitter = '<li class="flex-item"><i class="fa fa-twitter fa-lg"></i><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
+var HTMLgithub = '<li class="flex-item"><i class="fa fa-github-alt fa-lg"></i><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
+var HTMLblog = '<li class="flex-item"><i class="fa fa-rss fa-lg"></i><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
+var HTMLlocation = '<li class="flex-item"><i class="fa fa-globe fa-lg"></i><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
@@ -47,6 +47,9 @@ var HTMLprojectImage = '<img src="%data%" alt="project image">';
 
 var HTMLporjectStartPanel = '<div class="panel panel-success"></div>';
 var HTMLprojectTitlePanel = '<div class="panel-heading"><h3 class="panel-title">%data%</h3></div>';
+var HTMLprojectGithub = '<a href="%gdata%" class="btn btn-info btn-git" role="button"><i class="fa fa-github"></i><span class="projectLink">GitHub</span></a>';
+var HTMLprojectWebsite = '<a href="%wdata%" class="btn btn-info btn-web" role="button"><i class="fa fa-home"></i><span class="projectLink">Website</span></a>';
+
 var HTMLprojectBodyPanel = '<div class="panel-body"><div class="date-text">%dates%</div><p><br>%descpt%</p></div>';
 var HTMLprojectImagePanel = '<img src="%img%" alt="project image">';
 
