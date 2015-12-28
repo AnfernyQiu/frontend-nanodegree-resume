@@ -24,7 +24,7 @@ var HTMLgithub = '<li class="flex-item"><i class="fa fa-github-alt fa-lg"></i><s
 var HTMLblog = '<li class="flex-item"><i class="fa fa-rss fa-lg"></i><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
 var HTMLlocation = '<li class="flex-item"><i class="fa fa-globe fa-lg"></i><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
+var HTMLbioPic = '<img src="%data%" class="biopic" alt="image">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
@@ -69,15 +69,13 @@ var HTMLonlineURL = '<a href="#" class="onlineURL">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
-var infoPopup = '<div id="popcontent" class="popcontent">';
-var infoContent = '<h2></h2><hr><img src="" class="popimage"><p></p></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 
 $(document).ready(function() {
   $('button').click(function() {
     var iName = inName("Rambo Qiu") || function(){};
-    $('#name').html(iName);  
+    $('#name').html(iName);
   });
 });
 
@@ -119,12 +117,12 @@ function initializeMap() {
         disableDefaultUI: true
     };
 
-    /* 
+    /*
     For the map to be displayed, the googleMap var must be
-    appended to #mapDiv in resumeBuilder.js. 
+    appended to #mapDiv in resumeBuilder.js.
     */
     map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-    /* 
+    /*
 When someone clicks on the map other than the infowindow, the opened infowindow will be closed.
   */
     google.maps.event.addListener(map, 'click', function() {

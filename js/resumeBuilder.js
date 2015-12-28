@@ -18,7 +18,8 @@ var bio = {
     "skills": ["Never tired", "Deliver fun", "Fix the earth", "Saving the Universe"]
 };
 
-bio.display = function(bioObj) {
+bio.display = function() {
+    var bioObj=this;
     var formattedName = HTMLheaderName.replace("%data%", bioObj.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bioObj.role);
 
@@ -53,7 +54,7 @@ bio.display = function(bioObj) {
         $("#skills").html(TotalSkill);
     }
 
-    // display footer contacts    
+    // display footer contacts
     $("#footerContacts").append(mobile)
         .append(email)
         .append(Github);
@@ -77,7 +78,8 @@ var work = {
     }]
 };
 
-work.display = function(workObj) {
+work.display = function() {
+    var workObj=this;
     for (let workEntity of workObj.jobs) {
         $("#workExperience").append(HTMLworkStart);
         var employer = HTMLworkEmployer.replace("%data%", workEntity.employer);
@@ -96,7 +98,7 @@ var projects = {
     "projects": [{
             "title": "A webpage game",
             "dates": "2015-2016",
-            "description": "Build a classic arcade game Clone",
+            "description": "Build a classic arcade game Frogger",
             "github":"#",
             "website":"#",
             "images": [{
@@ -131,26 +133,9 @@ var projects = {
     ]
 };
 
-/*projects.display = function(projects) {
-    for (let pro of projects.projects) {
-        $("#projects").append(HTMLprojectStart);
-        var proTitle = HTMLprojectTitle.replace("%data%", pro.title);
-        var proDate = HTMLprojectDates.replace("%data%", pro.dates);
-        var proDes = HTMLprojectDescription.replace("%data%", pro.description);
-        $(".project-entry:last").append(proTitle + proDate + proDes);
-        if (pro.images.length > 0) {
-            for (let proImg of pro.images) {
-                var proImage = HTMLprojectImage.replace("%data%", proImg.url);
-                $(".project-entry:last").append(proImage);
-            }
 
-        }
-
-    }
-};
-*/
-
-projects.display=function(projects){
+projects.display=function(){
+    var projects=this;
     for (let pro of projects.projects){
         $("#projects").append(HTMLporjectStartPanel);
         var proTitle = HTMLprojectTitlePanel.replace("%data%", pro.title);
@@ -159,7 +144,7 @@ projects.display=function(projects){
         var proLink = $(proLinkGit+proLinkWeb);
         var proHead = $(proTitle);
         proHead.append(proLink);
-        
+
         var proBody = HTMLprojectBodyPanel.replace("%dates%", pro.dates);
         proBody = proBody.replace("%descpt%", pro.description);
         $(".panel-success:last").append(proHead)
@@ -173,7 +158,7 @@ projects.display=function(projects){
 
         }
     }
-}; 
+};
 
 var education = {
     "schools": [{
@@ -192,7 +177,8 @@ var education = {
     }]
 };
 
-education.display = function(eduObj) {
+education.display = function() {
+    var eduObj=this;
     for (let school of eduObj.schools) {
         $("#education").append(HTMLschoolStart);
         var schoolEdu = HTMLschoolName.replace("%data%", school.school);
@@ -225,7 +211,7 @@ education.display = function(eduObj) {
     }
 };
 
-//Below object and it's function are to deliver content to the infowindow.
+//Below JSON object and it's function are to deliver content to the infowindow.
 var metaLocation = {
     "location": [{
             "name": "Beijing",
@@ -296,9 +282,9 @@ var inName=function(_name){
 
 console.log(inName("Rambo Qiu"));*/
 
-work.display(work);
-bio.display(bio);
-projects.display(projects);
-education.display(education);
+work.display();
+bio.display();
+projects.display();
+education.display();
 
 $("#mapDiv").append(googleMap);

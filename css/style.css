@@ -24,6 +24,10 @@ h6 {
     padding: 0 5%;
 }
 
+.panel {
+    border-width: 2px;
+}
+
 .panel-success {
     margin: 0 5% 5px;
     border-radius: 20px;
@@ -153,19 +157,17 @@ a {
     background-color: #185626;
 }
 
-.work-entry{
+.work-entry {
     margin-bottom: 5px;
 }
 
-
-/* TODO: Replace with image later */
 
 #header {
     background-color: #185626;
 }
 
 .role {
-    color:aliceblue;
+    color: aliceblue;
     padding-left: 20px;
 }
 
@@ -177,6 +179,7 @@ hr {
     margin-top: 10px;
     margin-bottom: 0;
 }
+
 .flex-box {
     display: -webkit-flex;
     display: flex;
@@ -198,6 +201,7 @@ ul {
     display: none;
     color: #f5ae23;
 }
+
 .biopic {
     float: left;
     padding: 10px;
@@ -249,17 +253,15 @@ span {
     }
 }
 
-@media only screen and (max-width:900px) {
-
-}
-
 @media only screen and (max-width: 750px) {
     #lets-connect {
         margin-top: 10%;
     }
+
     .welcome-message {
         display: none;
     }
+
     .popimage {
         width: 120px;
     }
@@ -269,76 +271,71 @@ span {
     .brk {
         display: block;
     }
+
     .role {
         padding-left: 0;
     }
-   .fa.fa-lg {
+
+    .fa.fa-lg {
         display: inline;
     }
+
     .fa.fa-lg.fa-mobile {
         font-size: 1.6em;
     }
+
     .orange-text {
         display: none;
     }
-    
+
     .projectLink {
         display: none;
     }
+
     .btn {
         font-size: 16px;
         padding: 0 10px;
     }
+
     .btn-web {
         margin-right: 15px;
     }
-
 }
 
 @media only screen and (min-width: 750px) {
-    #skills-h3,
-    #skills,
-    .biopic {
+    #skills-h3, #skills, .biopic {
         display: block;
     }
 }
 
-@media only screen and (min-width: 1000px){
-  .center-content,
-    h2,
-    h3,
-    .work-entry,
-    .education-entry {
+@media only screen and (min-width: 1000px) {
+    .center-content, h2, h3, .work-entry, .education-entry {
         padding-left: 10%;
         padding-right: 10%;
-    }  
-    
+    }
+
     .panel-success {
         margin-left: 10%;
         margin-right: 10%;
     }
-    
+
     #map {
         margin-left: 10%;
         margin-right: 10%;
     }
 }
 
-@media only screen and (min-width: 1200px){
-    .center-content,
-    h2,
-    h3,
-    .work-entry,
-    .education-entry {
+@media only screen and (min-width: 1200px) {
+    .center-content, h2, h3, .work-entry, .education-entry {
         padding-left: 15%;
         padding-right: 15%;
-    }  
-    
+    }
+
     .panel-success {
         margin-left: 15%;
         margin-right: 15%;
     }
-    
+
     #map {
         margin-left: 15%;
         margin-right: 15%;
