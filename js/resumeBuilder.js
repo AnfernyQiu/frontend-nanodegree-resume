@@ -204,16 +204,11 @@ var metaLocation = {
     "location": [{
             "name": "Beijing",
             "description": "Beijing is the capital of the People's Republic of China and one of the most populous cities in the world. Its total population in 2013 was 21,150,000.[8] The city proper is the 3rd most populous in the world. The metropolis, located in northern China, is governed as a direct-controlled municipality under the national government with 16 urban, suburban, and rural districts.[9] Beijing Municipality is surrounded by Hebei Province with the exception of neighboring Tianjin Municipality to the southeast; together the three divisions form the Jingjinji metropolitan region and the national capital region of China.",
-            "images": [{
-                "url": "images/Beijing.jpg"
-            }]
-
+            "images": ["images/Beijing.jpg"]
         }, {
             "name": "Guangzhou",
             "description": "Guangzhou (also known as Canton, and less commonly as Kwangchow)[6] is the capital and largest city of Guangdong province in South China.[7] Located on the Pearl River, about 120 km (75 mi) north-northwest of Hong Kong and 145 km (90 mi) north of Macau, Guangzhou serves as an important national transportation hub and trading port.[8] One of the five National Central Cities,[9] it holds sub-provincial administrative status.",
-            "images": [{
-                "url": "images/Guangzhou.jpg"
-            }]
+            "images": ["images/Guangzhou.jpg"]
         }
 
     ]
@@ -221,12 +216,12 @@ var metaLocation = {
 
 metaLocation.show = function(locationName) {
     var htmlString;
-    for (let location of metaLocation["location"]) {
-        if (location["name"] === locationName) {
+    for (let location of metaLocation.location) {
+        if (location.name === locationName) {
             htmlString = `<div id="popcontent" class="popcontent">` +
-                `<h2>${location["name"]}</h2><hr>` +
-                `<img src="${location["images"][0]["url"]}" class="popimage">` +
-                `<p>${location["description"]}</p></div>`;
+                `<h2>${location.name}</h2><hr>` +
+                `<img src="${location.images[0]}" class="popimage">` +
+                `<p>${location.description}</p></div>`;
         }
     }
     return htmlString;
