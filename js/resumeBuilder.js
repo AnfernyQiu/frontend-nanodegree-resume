@@ -101,33 +101,21 @@ var projects = {
             "description": "Build a classic arcade game Frogger",
             "github":"#",
             "website":"#",
-            "images": [{
-                "url": "images/game-250_1x.jpg"
-            }, {
-                "url": "images/game2-250.jpg"
-            }]
+            "images": ["images/game-250_1x.jpg", "images/game2-250.jpg"]
         }, {
             "title": "An interative resume",
             "dates": "2015-2016",
             "description": "Build an interative resume to show myself and my projects",
             "github":"#",
             "website":"#",
-            "images": [{
-                "url": "images/resume-250_1x.jpg"
-            }, {
-                "url": "images/resume2-250.jpg"
-            }]
+            "images": ["images/resume-250_1x.jpg", "images/resume2-250.jpg"]
         }, {
             "title": "A portfolio website",
             "dates": "2015-2016",
             "description": "Build a portfolio website to show my projects",
             "github":"#",
             "website":"#",
-            "images": [{
-                "url": "images/portfolio1-250.jpg"
-            }, {
-                "url": "images/portfolio2-250.jpg"
-            }]
+            "images": ["images/portfolio1-250.jpg", "images/portfolio2-250.jpg"]
         }
 
     ]
@@ -151,7 +139,7 @@ projects.display=function(){
                                 .append(proBody);
         if (pro.images.length > 0) {
             for (let proImg of pro.images) {
-                var proImage = HTMLprojectImagePanel.replace("%img%", proImg.url);
+                var proImage = HTMLprojectImagePanel.replace("%img%", proImg);
                 $(".panel-success:last").find(".panel-body")
                                         .append(proImage);
             }
@@ -162,17 +150,17 @@ projects.display=function(){
 
 var education = {
     "schools": [{
-        "school": "South China University of Technology",
+        "name": "South China University of Technology",
         "location": "Guangzhou",
         "majors": ["electric and information technology", "Tennis"],
-        "date": 2001,
+        "dates": "1997-2001",
         "degree": "BA",
         "url": "http://www.scut.edu.cn/"
     }],
-    "online courses": [{
+    "onlineCourses": [{
         "title": "Udacity FrontEnd Nanodegree",
         "school": "Udacity",
-        "date": 2015,
+        "date": "2015-2016",
         "url": "http://www.Udacity.com"
     }]
 };
@@ -181,10 +169,10 @@ education.display = function() {
     var eduObj=this;
     for (let school of eduObj.schools) {
         $("#education").append(HTMLschoolStart);
-        var schoolEdu = HTMLschoolName.replace("%data%", school.school);
+        var schoolEdu = HTMLschoolName.replace("%data%", school.name);
         schoolEdu = schoolEdu.replace("#", school.url);
         var degreeEdu = HTMLschoolDegree.replace("%data%", school.degree);
-        var dateEdu = HTMLschoolDates.replace("%data%", school.date);
+        var dateEdu = HTMLschoolDates.replace("%data%", school.dates);
         var locationEdu = HTMLschoolLocation.replace("%data%", school.location);
         var majorString = 'Major: ';
         for (let major of school.majors)
@@ -198,7 +186,7 @@ education.display = function() {
             .append(majorString);
     }
 
-    for (let onlineCourse of eduObj["online courses"]) {
+    for (let onlineCourse of eduObj.onlineCourses) {
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
         var onlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title);
