@@ -188,7 +188,7 @@ education.display = function() {
 
         var majorString = 'Major: ';
         $.each(school.majors, function(i, major) {
-            majorString += '<i class="fa fa-star"></i> ' + major;
+            majorString += ' <i class="fa fa-star"></i>' + major;
         });
 
         majorString = "<em><br>" + majorString + "</em>";
