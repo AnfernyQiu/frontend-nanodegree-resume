@@ -69,6 +69,12 @@ var HTMLonlineURL = '<a href="#" class="onlineURL">%data%</a>';
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
+//create information template to show content in inforWindow
+var HTMLinforLocation='<div id="popcontent" class="popcontent">%data%</div>';
+var HTMLinforName='<h2>%name%</h2><hr>';
+var HTMLinforImage='<img src="%src%" class="popimage">';
+var HTMLinforDesp='<p>%desp%</p>';
+
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 

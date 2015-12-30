@@ -19,7 +19,7 @@ var bio = {
 };
 
 bio.display = function() {
-    var bioObj=this;
+    var bioObj = this;
     var formattedName = HTMLheaderName.replace("%data%", bioObj.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bioObj.role);
 
@@ -79,19 +79,19 @@ var work = {
 };
 
 work.display = function() {
-    var workObj=this;
-    for (let workEntity of workObj.jobs) {
+    var workObj = this;
+    $.each(workObj.jobs, function(i, job) {
         $("#workExperience").append(HTMLworkStart);
-        var employer = HTMLworkEmployer.replace("%data%", workEntity.employer);
-        var jobtitle = HTMLworkTitle.replace("%data%", workEntity.title);
-        var workLocation = HTMLworkLocation.replace("%data%", workEntity.location);
-        var workDates = HTMLworkDates.replace("%data%", workEntity.dates);
-        var workDes = HTMLworkDescription.replace("%data%", workEntity.description);
+        var employer = HTMLworkEmployer.replace("%data%", job.employer);
+        var jobtitle = HTMLworkTitle.replace("%data%", job.title);
+        var workLocation = HTMLworkLocation.replace("%data%", job.location);
+        var workDates = HTMLworkDates.replace("%data%", job.dates);
+        var workDes = HTMLworkDescription.replace("%data%", job.description);
         $(".work-entry:last").append(employer + jobtitle)
             .append(workLocation)
             .append(workDates)
             .append(workDes);
-    }
+    });
 };
 
 var projects = {
@@ -99,22 +99,22 @@ var projects = {
             "title": "A webpage game",
             "dates": "2015-2016",
             "description": "Build a classic arcade game Frogger",
-            "github":"#",
-            "website":"#",
+            "github": "#",
+            "website": "#",
             "images": ["images/game-250_1x.jpg", "images/game2-250.jpg"]
         }, {
             "title": "An interative resume",
             "dates": "2015-2016",
             "description": "Build an interative resume to show myself and my projects",
-            "github":"#",
-            "website":"#",
+            "github": "#",
+            "website": "#",
             "images": ["images/resume-250_1x.jpg", "images/resume2-250.jpg"]
         }, {
             "title": "A portfolio website",
             "dates": "2015-2016",
             "description": "Build a portfolio website to show my projects",
-            "github":"#",
-            "website":"#",
+            "github": "#",
+            "website": "#",
             "images": ["images/portfolio1-250.jpg", "images/portfolio2-250.jpg"]
         }
 
@@ -122,30 +122,30 @@ var projects = {
 };
 
 
-projects.display=function(){
-    var projects=this;
-    for (let pro of projects.projects){
+projects.display = function() {
+    var projects = this;
+    $.each(projects.projects, function(i, project) {
         $("#projects").append(HTMLporjectStartPanel);
-        var proTitle = HTMLprojectTitlePanel.replace("%data%", pro.title);
-        var proLinkGit = HTMLprojectGithub.replace("%gdata%", pro.github);
-        var proLinkWeb = HTMLprojectWebsite.replace("%wdata%", pro.website);
-        var proLink = $(proLinkGit+proLinkWeb);
+        var proTitle = HTMLprojectTitlePanel.replace("%data%", project.title);
+        var proLinkGit = HTMLprojectGithub.replace("%gdata%", project.github);
+        var proLinkWeb = HTMLprojectWebsite.replace("%wdata%", project.website);
+        var proLink = $(proLinkGit + proLinkWeb);
         var proHead = $(proTitle);
         proHead.append(proLink);
 
-        var proBody = HTMLprojectBodyPanel.replace("%dates%", pro.dates);
-        proBody = proBody.replace("%descpt%", pro.description);
+        var proBody = HTMLprojectBodyPanel.replace("%dates%", project.dates);
+        proBody = proBody.replace("%descpt%", project.description);
         $(".panel-success:last").append(proHead)
-                                .append(proBody);
-        if (pro.images.length > 0) {
-            for (let proImg of pro.images) {
-                var proImage = HTMLprojectImagePanel.replace("%img%", proImg);
-                $(".panel-success:last").find(".panel-body")
-                                        .append(proImage);
-            }
+            .append(proBody);
 
+        if (project.images.length > 0) {
+            $.each(project.images, function(i, image) {
+                var proImage = HTMLprojectImagePanel.replace("%img%", image);
+                $(".panel-success:last").find(".panel-body")
+                    .append(proImage);
+            });
         }
-    }
+    });
 };
 
 var education = {
@@ -166,27 +166,29 @@ var education = {
 };
 
 education.display = function() {
-    var eduObj=this;
-    for (let school of eduObj.schools) {
+    var eduObj = this;
+    $.each(eduObj.schools, function(i, school) {
         $("#education").append(HTMLschoolStart);
         var schoolEdu = HTMLschoolName.replace("%data%", school.name);
         schoolEdu = schoolEdu.replace("#", school.url);
         var degreeEdu = HTMLschoolDegree.replace("%data%", school.degree);
         var dateEdu = HTMLschoolDates.replace("%data%", school.dates);
         var locationEdu = HTMLschoolLocation.replace("%data%", school.location);
-        var majorString = 'Major: ';
-        for (let major of school.majors)
-            majorString += ` <i class="fa fa-star"></i>${major}`;
 
-        majorString = `<em><br>${majorString}</em>`;
+        var majorString = 'Major: ';
+        $.each(school.majors, function(i, major) {
+            majorString += '<i class="fa fa-star"></i> ' + major;
+        });
+
+        majorString = "<em><br>" + majorString + "</em>";
 
         $(".education-entry:last").append(schoolEdu + degreeEdu)
             .append(dateEdu)
             .append(locationEdu)
             .append(majorString);
-    }
+    });
 
-    for (let onlineCourse of eduObj.onlineCourses) {
+    $.each(eduObj.onlineCourses, function(i, onlineCourse) {
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
         var onlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title);
@@ -196,7 +198,7 @@ education.display = function() {
         $(".education-entry:last").append(onlineTitle + onlineSchool)
             .append(onlineDate)
             .append(onlineUrl);
-    }
+    });
 };
 
 //Below JSON object and it's function are to deliver content to the infowindow.
@@ -215,16 +217,19 @@ var metaLocation = {
 };
 
 metaLocation.show = function(locationName) {
-    var htmlString;
-    for (let location of metaLocation.location) {
-        if (location.name === locationName) {
-            htmlString = `<div id="popcontent" class="popcontent">` +
-                `<h2>${location.name}</h2><hr>` +
-                `<img src="${location.images[0]}" class="popimage">` +
-                `<p>${location.description}</p></div>`;
+    var inforLoc = HTMLinforLocation;
+    var inforName;
+    var inforImage;
+    var inforDesp;
+    $.each(metaLocation.location, function(i, location) {
+        if (location.name == locationName) {
+            inforName = HTMLinforName.replace("%name%", location.name);
+            inforImage = HTMLinforImage.replace("%src%", location.images[0]);
+            inforDesp = HTMLinforDesp.replace("%desp%", location.description);
+            inforLoc = inforLoc.replace("%data%", (inforName + inforImage + inforDesp));
         }
-    }
-    return htmlString;
+    });
+    return inforLoc;
 }
 
 
