@@ -20,20 +20,23 @@ var bio = {
 
 bio.display = function() {
     var bioObj = this;
-    var formattedName = HTMLheaderName.replace("%data%", bioObj.name);
-    var formattedRole = HTMLheaderRole.replace("%data%", bioObj.role);
+    var data="%data%";
+    var $header=$("#header");
 
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
+    var formattedName = HTMLheaderName.replace(data, bioObj.name);
+    var formattedRole = HTMLheaderRole.replace(data, bioObj.role);
 
-    var mobile = HTMLmobile.replace("%data%", bioObj.contacts.mobile);
-    var email = HTMLemail.replace("%data%", bioObj.contacts.email);
-    var twitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    var Github = HTMLgithub.replace("%data%", bioObj.contacts.github);
-    var blog = HTMLblog.replace("%data%", bioObj.contacts.blog);
-    var locationMy = HTMLlocation.replace("%data%", bioObj.contacts.location);
-    var picture = HTMLbioPic.replace("%data%", bioObj.biopic);
-    var welcomeMsg = HTMLwelcomeMsg.replace("%data%", bioObj.welcomeMessage);
+    $header.prepend(formattedRole);
+    $header.prepend(formattedName);
+
+    var mobile = HTMLmobile.replace(data, bioObj.contacts.mobile);
+    var email = HTMLemail.replace(data, bioObj.contacts.email);
+    var twitter = HTMLtwitter.replace(data, bio.contacts.twitter);
+    var Github = HTMLgithub.replace(data, bioObj.contacts.github);
+    var blog = HTMLblog.replace(data, bioObj.contacts.blog);
+    var locationMy = HTMLlocation.replace(data, bioObj.contacts.location);
+    var picture = HTMLbioPic.replace(data, bioObj.biopic);
+    var welcomeMsg = HTMLwelcomeMsg.replace(data, bioObj.welcomeMessage);
 
     $("#topContacts").append(mobile)
         .append(email)
@@ -42,14 +45,14 @@ bio.display = function() {
         .append(blog)
         .append(locationMy);
 
-    $("#header").append(picture)
+    $header.append(picture)
         .append(welcomeMsg);
 
 
     if (bioObj.skills.length > 0) {
-        $("#header").append(HTMLskillsStart);
+        $header.append(HTMLskillsStart);
         var TotalSkill = $.map(bioObj.skills, function(skill, i) {
-            return HTMLskills.replace("%data%", skill);
+            return HTMLskills.replace(data, skill);
         });
         $("#skills").html(TotalSkill);
     }
@@ -80,13 +83,15 @@ var work = {
 
 work.display = function() {
     var workObj = this;
+    var data="%data%";
+
     $.each(workObj.jobs, function(i, job) {
         $("#workExperience").append(HTMLworkStart);
-        var employer = HTMLworkEmployer.replace("%data%", job.employer);
-        var jobtitle = HTMLworkTitle.replace("%data%", job.title);
-        var workLocation = HTMLworkLocation.replace("%data%", job.location);
-        var workDates = HTMLworkDates.replace("%data%", job.dates);
-        var workDes = HTMLworkDescription.replace("%data%", job.description);
+        var employer = HTMLworkEmployer.replace(data, job.employer);
+        var jobtitle = HTMLworkTitle.replace(data, job.title);
+        var workLocation = HTMLworkLocation.replace(data, job.location);
+        var workDates = HTMLworkDates.replace(data, job.dates);
+        var workDes = HTMLworkDescription.replace(data, job.description);
         $(".work-entry:last").append(employer + jobtitle)
             .append(workLocation)
             .append(workDates)
@@ -124,24 +129,26 @@ var projects = {
 
 projects.display = function() {
     var projects = this;
+    var data="%data%";
     $.each(projects.projects, function(i, project) {
         $("#projects").append(HTMLporjectStartPanel);
-        var proTitle = HTMLprojectTitlePanel.replace("%data%", project.title);
-        var proLinkGit = HTMLprojectGithub.replace("%gdata%", project.github);
-        var proLinkWeb = HTMLprojectWebsite.replace("%wdata%", project.website);
+        var $panelLast=$(".panel-success:last");
+        var proTitle = HTMLprojectTitlePanel.replace(data, project.title);
+        var proLinkGit = HTMLprojectGithub.replace(data, project.github);
+        var proLinkWeb = HTMLprojectWebsite.replace(data, project.website);
         var proLink = $(proLinkGit + proLinkWeb);
         var proHead = $(proTitle);
         proHead.append(proLink);
 
         var proBody = HTMLprojectBodyPanel.replace("%dates%", project.dates);
         proBody = proBody.replace("%descpt%", project.description);
-        $(".panel-success:last").append(proHead)
+        $panelLast.append(proHead)
             .append(proBody);
 
         if (project.images.length > 0) {
             $.each(project.images, function(i, image) {
-                var proImage = HTMLprojectImagePanel.replace("%img%", image);
-                $(".panel-success:last").find(".panel-body")
+                var proImage = HTMLprojectImagePanel.replace(data, image);
+                $panelLast.find(".panel-body")
                     .append(proImage);
             });
         }
@@ -167,13 +174,17 @@ var education = {
 
 education.display = function() {
     var eduObj = this;
+    var data="%data%";
+    var education=$("#education");
+
     $.each(eduObj.schools, function(i, school) {
-        $("#education").append(HTMLschoolStart);
-        var schoolEdu = HTMLschoolName.replace("%data%", school.name);
+        education.append(HTMLschoolStart);
+        var $educationLast=$(".education-entry:last");
+        var schoolEdu = HTMLschoolName.replace(data, school.name);
         schoolEdu = schoolEdu.replace("#", school.url);
-        var degreeEdu = HTMLschoolDegree.replace("%data%", school.degree);
-        var dateEdu = HTMLschoolDates.replace("%data%", school.dates);
-        var locationEdu = HTMLschoolLocation.replace("%data%", school.location);
+        var degreeEdu = HTMLschoolDegree.replace(data, school.degree);
+        var dateEdu = HTMLschoolDates.replace(data, school.dates);
+        var locationEdu = HTMLschoolLocation.replace(data, school.location);
 
         var majorString = 'Major: ';
         $.each(school.majors, function(i, major) {
@@ -182,20 +193,21 @@ education.display = function() {
 
         majorString = "<em><br>" + majorString + "</em>";
 
-        $(".education-entry:last").append(schoolEdu + degreeEdu)
+        $educationLast.append(schoolEdu + degreeEdu)
             .append(dateEdu)
             .append(locationEdu)
             .append(majorString);
     });
 
     $.each(eduObj.onlineCourses, function(i, onlineCourse) {
-        $("#education").append(HTMLonlineClasses);
-        $("#education").append(HTMLschoolStart);
-        var onlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title);
-        var onlineSchool = HTMLonlineSchool.replace("%data%", onlineCourse.school);
-        var onlineDate = HTMLonlineDates.replace("%data%", onlineCourse.date);
-        var onlineUrl = HTMLonlineURL.replace("%data%", onlineCourse.url);
-        $(".education-entry:last").append(onlineTitle + onlineSchool)
+        education.append(HTMLonlineClasses);
+        education.append(HTMLschoolStart);
+        var $educationLast=$(".education-entry:last");
+        var onlineTitle = HTMLonlineTitle.replace(data, onlineCourse.title);
+        var onlineSchool = HTMLonlineSchool.replace(data, onlineCourse.school);
+        var onlineDate = HTMLonlineDates.replace(data, onlineCourse.date);
+        var onlineUrl = HTMLonlineURL.replace(data, onlineCourse.url);
+        $educationLast.append(onlineTitle + onlineSchool)
             .append(onlineDate)
             .append(onlineUrl);
     });
@@ -221,16 +233,17 @@ metaLocation.show = function(locationName) {
     var inforName;
     var inforImage;
     var inforDesp;
+    var data="%data%";
     $.each(metaLocation.location, function(i, location) {
         if (location.name == locationName) {
-            inforName = HTMLinforName.replace("%name%", location.name);
-            inforImage = HTMLinforImage.replace("%src%", location.images[0]);
-            inforDesp = HTMLinforDesp.replace("%desp%", location.description);
-            inforLoc = inforLoc.replace("%data%", (inforName + inforImage + inforDesp));
+            inforName = HTMLinforName.replace(data, location.name);
+            inforImage = HTMLinforImage.replace(data, location.images[0]);
+            inforDesp = HTMLinforDesp.replace(data, location.description);
+            inforLoc = inforLoc.replace(data, (inforName + inforImage + inforDesp));
         }
     });
     return inforLoc;
-}
+};
 
 
 /*for(var job in work.jobs){

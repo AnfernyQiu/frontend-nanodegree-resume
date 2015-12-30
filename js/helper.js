@@ -47,11 +47,11 @@ var HTMLprojectImage = '<img src="%data%" alt="project image">';
 
 var HTMLporjectStartPanel = '<div class="panel panel-success"></div>';
 var HTMLprojectTitlePanel = '<div class="panel-heading"><h3 class="panel-title">%data%</h3></div>';
-var HTMLprojectGithub = '<a href="%gdata%" class="btn btn-info btn-git" role="button"><i class="fa fa-github"></i><span class="projectLink">GitHub</span></a>';
-var HTMLprojectWebsite = '<a href="%wdata%" class="btn btn-info btn-web" role="button"><i class="fa fa-home"></i><span class="projectLink">Website</span></a>';
+var HTMLprojectGithub = '<a href="%data%" class="btn btn-info btn-git" role="button"><i class="fa fa-github"></i><span class="projectLink">GitHub</span></a>';
+var HTMLprojectWebsite = '<a href="%data%" class="btn btn-info btn-web" role="button"><i class="fa fa-home"></i><span class="projectLink">Website</span></a>';
 
 var HTMLprojectBodyPanel = '<div class="panel-body"><div class="date-text">%dates%</div><p><br>%descpt%</p></div>';
-var HTMLprojectImagePanel = '<img src="%img%" alt="project image">';
+var HTMLprojectImagePanel = '<img src="%data%" alt="project image">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -71,9 +71,9 @@ var googleMap = '<div id="map"></div>';
 
 //create information template to show content in inforWindow
 var HTMLinforLocation='<div id="popcontent" class="popcontent">%data%</div>';
-var HTMLinforName='<h2>%name%</h2><hr>';
-var HTMLinforImage='<img src="%src%" class="popimage">';
-var HTMLinforDesp='<p>%desp%</p>';
+var HTMLinforName='<h2>%data%</h2><hr>';
+var HTMLinforImage='<img src="%data%" class="popimage">';
+var HTMLinforDesp='<p>%data%</p>';
 
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
